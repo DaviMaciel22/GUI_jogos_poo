@@ -10,7 +10,7 @@ namespace Simple_Punch_Out_Game_MOO_ICT
         int index = 0;
         int playerHealth = 100;
         int enemyHealth = 100;
-        List<string> enemyAttack = new List<string> { "left", "right", "block"};
+        List<string> enemyAttack = new List<string> { "left", "right", "block" };
 
 
 
@@ -36,7 +36,7 @@ namespace Simple_Punch_Out_Game_MOO_ICT
                         playerHealth -= 5;
                     }
 
-                break;
+                    break;
 
                 case "right":
 
@@ -47,14 +47,14 @@ namespace Simple_Punch_Out_Game_MOO_ICT
                     {
                         playerHealth -= 5;
                     }
-                break;
+                    break;
 
                 case "block":
 
                     boxer.Image = Properties.Resources.enemy_block;
                     enemyBlock = true;
 
-                break;
+                    break;
             }
 
 
@@ -62,19 +62,17 @@ namespace Simple_Punch_Out_Game_MOO_ICT
 
         private void BoxerMoveTimerEvent(object sender, EventArgs e)
         {
-            // set up both health bars
-            if (playerHealth > 1)
+            // 1. Atualiza as barras de vida na tela
+            if (playerHealth > 0)
             {
                 playerHealthBar.Value = playerHealth;
             }
-            if (enemyHealth > 1)
+            if (enemyHealth > 0)
             {
                 boxerHealthBar.Value = enemyHealth;
             }
 
-
-            // move the boxer
-
+            // 2. Movimenta o lutador inimigo
             boxer.Left += enemySpeed;
 
             if (boxer.Left > 430)
@@ -86,24 +84,27 @@ namespace Simple_Punch_Out_Game_MOO_ICT
                 enemySpeed = 5;
             }
 
-            // check for the end of game scenario
-
+            // 3. Verifica o cenário de fim de jogo
             if (enemyHealth < 1)
             {
                 BoxerAttackTimer.Stop();
                 BoxerMoveTimer.Stop();
-                MessageBox.Show("You Win, Click OK to Play Again", "Moo Says: ");
-                ResetGame();
+
+                // Mostra o texto e o botão de restart na própria tela
+                lblMensagem.Text = "Você Venceu!";
+                lblMensagem.Visible = true;
+                btnRestart.Visible = true;
             }
-            if (playerHealth < 1)
+            else if (playerHealth < 1)
             {
                 BoxerAttackTimer.Stop();
                 BoxerMoveTimer.Stop();
-                MessageBox.Show("Tough Rob Wins, Click OK to Play Again", "Moo Says: ");
-                ResetGame();
+
+                // Mostra o texto e o botão de restart na própria tela
+                lblMensagem.Text = "Tough Rob Venceu!";
+                lblMensagem.Visible = true;
+                btnRestart.Visible = true;
             }
-
-
         }
 
         private void KeyIsDown(object sender, KeyEventArgs e)
@@ -150,5 +151,24 @@ namespace Simple_Punch_Out_Game_MOO_ICT
 
             boxer.Left = 400;
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRestart_Click(object sender, EventArgs e)
+        {
+            // Esconde a mensagem e o botão novamente
+            lblMensagem.Visible = false;
+            btnRestart.Visible = false;
+
+            // Reinicia o jogo
+            ResetGame();
+
+            // Garante que o jogador (Form) volte a ter o "foco" do teclado para se mexer
+            this.Focus();
+        }
     }
-}
+    }
+
