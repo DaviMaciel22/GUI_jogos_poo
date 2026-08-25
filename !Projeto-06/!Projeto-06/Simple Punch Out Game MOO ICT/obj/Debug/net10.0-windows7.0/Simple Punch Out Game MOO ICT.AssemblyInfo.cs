@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Simple Punch Out Game MOO ICT")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1f216cd7b1000f7d4718bda8bea46900ba91ef7b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Simple Punch Out Game MOO ICT")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Simple Punch Out Game MOO ICT")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
