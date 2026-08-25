@@ -40,6 +40,7 @@
             label_combo = new Label();
             label_combo_quebrado = new Label();
             FimComboTimer = new System.Windows.Forms.Timer(components);
+            stamineBar = new ProgressBar();
             ((System.ComponentModel.ISupportInitialize)player).BeginInit();
             ((System.ComponentModel.ISupportInitialize)boxer).BeginInit();
             SuspendLayout();
@@ -146,6 +147,14 @@
             FimComboTimer.Enabled = true;
             FimComboTimer.Interval = 2000;
             FimComboTimer.Tick += FimComboTimer_Tick;
+            // stamineBar
+            // 
+            stamineBar.Location = new Point(603, 526);
+            stamineBar.Name = "stamineBar";
+            stamineBar.Size = new Size(119, 23);
+            stamineBar.TabIndex = 5;
+            stamineBar.Value = 100;
+            stamineBar.Click += stamineBar_Click_1;
             // 
             // Form1
             // 
@@ -156,6 +165,7 @@
             ClientSize = new Size(734, 561);
             Controls.Add(label_combo_quebrado);
             Controls.Add(label_combo);
+            Controls.Add(stamineBar);
             Controls.Add(lblMensagem);
             Controls.Add(btnRestart);
             Controls.Add(player);
@@ -188,5 +198,6 @@
         private Label label_combo;
         private Label label_combo_quebrado;
         private System.Windows.Forms.Timer FimComboTimer;
+        private ProgressBar stamineBar;
     }
 }
