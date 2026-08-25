@@ -11,6 +11,8 @@ namespace Simple_Punch_Out_Game_MOO_ICT
         int playerHealth = 100;
         int enemyHealth = 100;
         List<string> enemyAttack = new List<string> { "left", "right", "block" };
+        int playerStamina = 100;
+        
 
 
 
@@ -94,6 +96,7 @@ namespace Simple_Punch_Out_Game_MOO_ICT
                 lblMensagem.Text = "Você Venceu!";
                 lblMensagem.Visible = true;
                 btnRestart.Visible = true;
+                playerStamina = 100;
             }
             else if (playerHealth < 1)
             {
@@ -104,25 +107,37 @@ namespace Simple_Punch_Out_Game_MOO_ICT
                 lblMensagem.Text = "Tough Rob Venceu!";
                 lblMensagem.Visible = true;
                 btnRestart.Visible = true;
+                playerStamina = 100;
             }
+
+            if (playerStamina < 100)
+            {
+                playerStamina += 2; // Aumente este valor se quiser que recarregue mais rápido
+            }
+
+            // Garante que o valor não passe de 100 ou caia abaixo de 0 antes de atualizar a UI
+            playerStamina = Math.Clamp(playerStamina, 0, 100);
+            stamineBar.Value = playerStamina;
         }
 
         private void KeyIsDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Left)
+            if (e.KeyCode == Keys.Left && playerStamina >= 30)
             {
                 player.Image = Properties.Resources.boxer_left_punch;
                 playerBlock = false;
+                playerStamina -= 30;
 
                 if (player.Bounds.IntersectsWith(boxer.Bounds) && enemyBlock == false)
                 {
                     enemyHealth -= 5;
                 }
             }
-            if (e.KeyCode == Keys.Right)
+            if (e.KeyCode == Keys.Right && playerStamina >= 30)
             {
                 player.Image = Properties.Resources.boxer_right_punch;
                 playerBlock = false;
+                playerStamina -= 30;
 
                 if (player.Bounds.IntersectsWith(boxer.Bounds) && enemyBlock == false)
                 {
@@ -169,6 +184,13 @@ namespace Simple_Punch_Out_Game_MOO_ICT
             // Garante que o jogador (Form) volte a ter o "foco" do teclado para se mexer
             this.Focus();
         }
+
+        
+
+        private void stamineBar_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
-    }
+}
 

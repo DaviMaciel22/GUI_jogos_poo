@@ -37,6 +37,7 @@
             BoxerMoveTimer = new System.Windows.Forms.Timer(components);
             btnRestart = new Button();
             lblMensagem = new Label();
+            stamineBar = new ProgressBar();
             ((System.ComponentModel.ISupportInitialize)player).BeginInit();
             ((System.ComponentModel.ISupportInitialize)boxer).BeginInit();
             SuspendLayout();
@@ -114,6 +115,15 @@
             lblMensagem.TextAlign = ContentAlignment.MiddleCenter;
             lblMensagem.Visible = false;
             // 
+            // stamineBar
+            // 
+            stamineBar.Location = new Point(603, 526);
+            stamineBar.Name = "stamineBar";
+            stamineBar.Size = new Size(119, 23);
+            stamineBar.TabIndex = 5;
+            stamineBar.Value = 100;
+            stamineBar.Click += stamineBar_Click_1;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -121,6 +131,7 @@
             BackgroundImage = Properties.Resources.background;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(734, 561);
+            Controls.Add(stamineBar);
             Controls.Add(lblMensagem);
             Controls.Add(btnRestart);
             Controls.Add(player);
@@ -150,5 +161,6 @@
         private System.Windows.Forms.Timer BoxerMoveTimer;
         private Button btnRestart;
         private Label lblMensagem;
+        private ProgressBar stamineBar;
     }
 }
