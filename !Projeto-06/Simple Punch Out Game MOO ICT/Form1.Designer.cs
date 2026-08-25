@@ -38,6 +38,8 @@
             btnRestart = new Button();
             lblMensagem = new Label();
             label_combo = new Label();
+            label_combo_quebrado = new Label();
+            FimComboTimer = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)player).BeginInit();
             ((System.ComponentModel.ISupportInitialize)boxer).BeginInit();
             SuspendLayout();
@@ -127,6 +129,24 @@
             label_combo.Visible = false;
             label_combo.Click += label1_Click;
             // 
+            // label_combo_quebrado
+            // 
+            label_combo_quebrado.BackColor = Color.Transparent;
+            label_combo_quebrado.Font = new Font("Segoe UI", 15F);
+            label_combo_quebrado.Location = new Point(1, 293);
+            label_combo_quebrado.Name = "label_combo_quebrado";
+            label_combo_quebrado.Size = new Size(178, 29);
+            label_combo_quebrado.TabIndex = 6;
+            label_combo_quebrado.Text = "Combo quebrado!";
+            label_combo_quebrado.Visible = false;
+            label_combo_quebrado.Click += label1_Click_1;
+            // 
+            // FimComboTimer
+            // 
+            FimComboTimer.Enabled = true;
+            FimComboTimer.Interval = 2000;
+            FimComboTimer.Tick += FimComboTimer_Tick;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -134,6 +154,7 @@
             BackgroundImage = Properties.Resources.background;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(734, 561);
+            Controls.Add(label_combo_quebrado);
             Controls.Add(label_combo);
             Controls.Add(lblMensagem);
             Controls.Add(btnRestart);
@@ -165,5 +186,7 @@
         private Button btnRestart;
         private Label lblMensagem;
         private Label label_combo;
+        private Label label_combo_quebrado;
+        private System.Windows.Forms.Timer FimComboTimer;
     }
 }

@@ -35,6 +35,10 @@ namespace Simple_Punch_Out_Game_MOO_ICT
                     if (boxer.Bounds.IntersectsWith(player.Bounds) && playerBlock == false)
                     {
                         playerHealth -= 5;
+                        combo = 0;
+                        label_combo.Visible = false;
+                        label_combo_quebrado.Visible = true;
+                        FimComboTimer.Start();
                     }
 
                     break;
@@ -47,7 +51,12 @@ namespace Simple_Punch_Out_Game_MOO_ICT
                     if (boxer.Bounds.IntersectsWith(player.Bounds) && playerBlock == false)
                     {
                         playerHealth -= 5;
+                        combo = 0;
+                        label_combo.Visible = false;
+                        label_combo_quebrado.Visible = true;
+                        FimComboTimer.Start();
                     }
+
                     break;
 
                 case "block":
@@ -122,16 +131,28 @@ namespace Simple_Punch_Out_Game_MOO_ICT
                 if (player.Bounds.IntersectsWith(boxer.Bounds) && enemyBlock == false)
                 {
                     combo++;
-                    if (combo < 5)
-                    {
-                       enemyHealth -= 5;
-                    }
-                    if (combo > 5)
+                    if (combo >= 5 && combo < 10)
                     {
                         enemyHealth -= 7;
                     }
 
+                    else if (combo >= 10)
+                    {
+                        enemyHealth -= 10;
+                    }
+
+                    else
+                    {
+                        enemyHealth -= 5;
+                    }
                     AtualizarTelaCombo();
+                }
+                else
+                {
+                    combo = 0;
+                    label_combo.Visible = false;
+                    label_combo_quebrado.Visible = true;
+                    FimComboTimer.Start();
                 }
             }
             if (e.KeyCode == Keys.Right)
@@ -142,16 +163,28 @@ namespace Simple_Punch_Out_Game_MOO_ICT
                 if (player.Bounds.IntersectsWith(boxer.Bounds) && enemyBlock == false)
                 {
                     combo++;
-                    if (combo < 5)
-                    {
-                        enemyHealth -= 5;
-                    }
-                    if (combo > 5)
+                    if (combo >= 5 && combo < 10)
                     {
                         enemyHealth -= 7;
                     }
 
+                    else if (combo >= 10)
+                    {
+                        enemyHealth -= 10;
+                    }
+
+                    else
+                    {
+                        enemyHealth -= 5;
+                    }
                     AtualizarTelaCombo();
+                }
+                else
+                {
+                    combo = 0;
+                    label_combo.Visible = false;
+                    label_combo_quebrado.Visible = true;
+                    FimComboTimer.Start();
                 }
             }
             if (e.KeyCode == Keys.Down)
@@ -211,7 +244,18 @@ namespace Simple_Punch_Out_Game_MOO_ICT
 
         private void label1_Click(object sender, EventArgs e)
         {
-            
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FimComboTimer_Tick(object sender, EventArgs e)
+        {
+            label_combo_quebrado.Visible = false;
+            FimComboTimer.Stop();
         }
     }
 }
