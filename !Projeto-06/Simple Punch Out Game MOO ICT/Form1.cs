@@ -10,6 +10,7 @@ namespace Simple_Punch_Out_Game_MOO_ICT
         int index = 0;
         int playerHealth = 100;
         int enemyHealth = 100;
+        int combo = 0;
         List<string> enemyAttack = new List<string> { "left", "right", "block" };
 
 
@@ -94,6 +95,8 @@ namespace Simple_Punch_Out_Game_MOO_ICT
                 lblMensagem.Text = "Você Venceu!";
                 lblMensagem.Visible = true;
                 btnRestart.Visible = true;
+                combo = 0;
+                label_combo.Visible = false;
             }
             else if (playerHealth < 1)
             {
@@ -104,6 +107,8 @@ namespace Simple_Punch_Out_Game_MOO_ICT
                 lblMensagem.Text = "Tough Rob Venceu!";
                 lblMensagem.Visible = true;
                 btnRestart.Visible = true;
+                combo = 0;
+                label_combo.Visible = false;
             }
         }
 
@@ -116,7 +121,17 @@ namespace Simple_Punch_Out_Game_MOO_ICT
 
                 if (player.Bounds.IntersectsWith(boxer.Bounds) && enemyBlock == false)
                 {
-                    enemyHealth -= 5;
+                    combo++;
+                    if (combo < 5)
+                    {
+                       enemyHealth -= 5;
+                    }
+                    if (combo > 5)
+                    {
+                        enemyHealth -= 7;
+                    }
+
+                    AtualizarTelaCombo();
                 }
             }
             if (e.KeyCode == Keys.Right)
@@ -126,7 +141,17 @@ namespace Simple_Punch_Out_Game_MOO_ICT
 
                 if (player.Bounds.IntersectsWith(boxer.Bounds) && enemyBlock == false)
                 {
-                    enemyHealth -= 5;
+                    combo++;
+                    if (combo < 5)
+                    {
+                        enemyHealth -= 5;
+                    }
+                    if (combo > 5)
+                    {
+                        enemyHealth -= 7;
+                    }
+
+                    AtualizarTelaCombo();
                 }
             }
             if (e.KeyCode == Keys.Down)
@@ -152,6 +177,20 @@ namespace Simple_Punch_Out_Game_MOO_ICT
             boxer.Left = 400;
         }
 
+        public void AtualizarTelaCombo()
+        {
+            label_combo.Text = combo.ToString();
+            if (combo >= 1)
+            {
+                label_combo.Visible = true;
+            }
+            else
+            {
+                label_combo.Visible = false;
+            }
+        }
+
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -169,6 +208,11 @@ namespace Simple_Punch_Out_Game_MOO_ICT
             // Garante que o jogador (Form) volte a ter o "foco" do teclado para se mexer
             this.Focus();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
-    }
+}
 

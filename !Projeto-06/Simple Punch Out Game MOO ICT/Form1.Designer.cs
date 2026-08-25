@@ -37,6 +37,7 @@
             BoxerMoveTimer = new System.Windows.Forms.Timer(components);
             btnRestart = new Button();
             lblMensagem = new Label();
+            label_combo = new Label();
             ((System.ComponentModel.ISupportInitialize)player).BeginInit();
             ((System.ComponentModel.ISupportInitialize)boxer).BeginInit();
             SuspendLayout();
@@ -114,6 +115,18 @@
             lblMensagem.TextAlign = ContentAlignment.MiddleCenter;
             lblMensagem.Visible = false;
             // 
+            // label_combo
+            // 
+            label_combo.BackColor = Color.Transparent;
+            label_combo.Font = new Font("Segoe UI", 15F);
+            label_combo.Location = new Point(12, 256);
+            label_combo.Name = "label_combo";
+            label_combo.Size = new Size(47, 27);
+            label_combo.TabIndex = 5;
+            label_combo.Text = "0";
+            label_combo.Visible = false;
+            label_combo.Click += label1_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -121,6 +134,7 @@
             BackgroundImage = Properties.Resources.background;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(734, 561);
+            Controls.Add(label_combo);
             Controls.Add(lblMensagem);
             Controls.Add(btnRestart);
             Controls.Add(player);
@@ -150,5 +164,6 @@
         private System.Windows.Forms.Timer BoxerMoveTimer;
         private Button btnRestart;
         private Label lblMensagem;
+        private Label label_combo;
     }
 }
