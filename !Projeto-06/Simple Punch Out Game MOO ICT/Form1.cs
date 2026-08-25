@@ -37,10 +37,14 @@ namespace Simple_Punch_Out_Game_MOO_ICT
                     if (boxer.Bounds.IntersectsWith(player.Bounds) && playerBlock == false)
                     {
                         playerHealth -= 5;
-                        combo = 0;
-                        label_combo.Visible = false;
-                        label_combo_quebrado.Visible = true;
-                        FimComboTimer.Start();
+
+                        if (combo > 0)
+                        {
+                            label_combo.Visible = false;
+                            label_combo_quebrado.Visible = true;
+                            FimComboTimer.Start();
+                            combo = 0;
+                        }
                     }
 
                     break;
@@ -53,10 +57,13 @@ namespace Simple_Punch_Out_Game_MOO_ICT
                     if (boxer.Bounds.IntersectsWith(player.Bounds) && playerBlock == false)
                     {
                         playerHealth -= 5;
-                        combo = 0;
-                        label_combo.Visible = false;
-                        label_combo_quebrado.Visible = true;
-                        FimComboTimer.Start();
+                        if (combo > 0)
+                        {
+                            label_combo.Visible = false;
+                            label_combo_quebrado.Visible = true;
+                            FimComboTimer.Start();
+                            combo = 0;
+                        }
                     }
 
                     break;
@@ -163,10 +170,13 @@ namespace Simple_Punch_Out_Game_MOO_ICT
                 }
                 else
                 {
-                    combo = 0;
-                    label_combo.Visible = false;
-                    label_combo_quebrado.Visible = true;
-                    FimComboTimer.Start();
+                    if (combo > 0)
+                    {
+                        label_combo.Visible = false;
+                        label_combo_quebrado.Visible = true;
+                        FimComboTimer.Start();
+                        combo = 0;
+                    }
                 }
             }
             if (e.KeyCode == Keys.Right && playerStamina >= 30)
@@ -196,10 +206,13 @@ namespace Simple_Punch_Out_Game_MOO_ICT
                 }
                 else
                 {
-                    combo = 0;
-                    label_combo.Visible = false;
-                    label_combo_quebrado.Visible = true;
-                    FimComboTimer.Start();
+                    if (combo > 0)
+                    {
+                        label_combo.Visible = false;
+                        label_combo_quebrado.Visible = true;
+                        FimComboTimer.Start();
+                        combo = 0;
+                    }
                 }
             }
             if (e.KeyCode == Keys.Down)
