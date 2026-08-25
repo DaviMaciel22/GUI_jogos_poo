@@ -10,6 +10,7 @@ namespace Simple_Punch_Out_Game_MOO_ICT
         int index = 0;
         int playerHealth = 100;
         int enemyHealth = 100;
+        int combo = 0;
         List<string> enemyAttack = new List<string> { "left", "right", "block" };
         int playerStamina = 100;
         
@@ -36,6 +37,10 @@ namespace Simple_Punch_Out_Game_MOO_ICT
                     if (boxer.Bounds.IntersectsWith(player.Bounds) && playerBlock == false)
                     {
                         playerHealth -= 5;
+                        combo = 0;
+                        label_combo.Visible = false;
+                        label_combo_quebrado.Visible = true;
+                        FimComboTimer.Start();
                     }
 
                     break;
@@ -48,7 +53,12 @@ namespace Simple_Punch_Out_Game_MOO_ICT
                     if (boxer.Bounds.IntersectsWith(player.Bounds) && playerBlock == false)
                     {
                         playerHealth -= 5;
+                        combo = 0;
+                        label_combo.Visible = false;
+                        label_combo_quebrado.Visible = true;
+                        FimComboTimer.Start();
                     }
+
                     break;
 
                 case "block":
@@ -96,6 +106,8 @@ namespace Simple_Punch_Out_Game_MOO_ICT
                 lblMensagem.Text = "Você Venceu!";
                 lblMensagem.Visible = true;
                 btnRestart.Visible = true;
+                combo = 0;
+                label_combo.Visible = false;
                 playerStamina = 100;
             }
             else if (playerHealth < 1)
@@ -107,6 +119,8 @@ namespace Simple_Punch_Out_Game_MOO_ICT
                 lblMensagem.Text = "Tough Rob Venceu!";
                 lblMensagem.Visible = true;
                 btnRestart.Visible = true;
+                combo = 0;
+                label_combo.Visible = false;
                 playerStamina = 100;
             }
 
@@ -130,7 +144,29 @@ namespace Simple_Punch_Out_Game_MOO_ICT
 
                 if (player.Bounds.IntersectsWith(boxer.Bounds) && enemyBlock == false)
                 {
-                    enemyHealth -= 5;
+                    combo++;
+                    if (combo >= 5 && combo < 10)
+                    {
+                        enemyHealth -= 7;
+                    }
+
+                    else if (combo >= 10)
+                    {
+                        enemyHealth -= 10;
+                    }
+
+                    else
+                    {
+                        enemyHealth -= 5;
+                    }
+                    AtualizarTelaCombo();
+                }
+                else
+                {
+                    combo = 0;
+                    label_combo.Visible = false;
+                    label_combo_quebrado.Visible = true;
+                    FimComboTimer.Start();
                 }
             }
             if (e.KeyCode == Keys.Right && playerStamina >= 30)
@@ -141,7 +177,29 @@ namespace Simple_Punch_Out_Game_MOO_ICT
 
                 if (player.Bounds.IntersectsWith(boxer.Bounds) && enemyBlock == false)
                 {
-                    enemyHealth -= 5;
+                    combo++;
+                    if (combo >= 5 && combo < 10)
+                    {
+                        enemyHealth -= 7;
+                    }
+
+                    else if (combo >= 10)
+                    {
+                        enemyHealth -= 10;
+                    }
+
+                    else
+                    {
+                        enemyHealth -= 5;
+                    }
+                    AtualizarTelaCombo();
+                }
+                else
+                {
+                    combo = 0;
+                    label_combo.Visible = false;
+                    label_combo_quebrado.Visible = true;
+                    FimComboTimer.Start();
                 }
             }
             if (e.KeyCode == Keys.Down)
@@ -167,6 +225,20 @@ namespace Simple_Punch_Out_Game_MOO_ICT
             boxer.Left = 400;
         }
 
+        public void AtualizarTelaCombo()
+        {
+            label_combo.Text = combo.ToString();
+            if (combo >= 1)
+            {
+                label_combo.Visible = true;
+            }
+            else
+            {
+                label_combo.Visible = false;
+            }
+        }
+
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -185,6 +257,21 @@ namespace Simple_Punch_Out_Game_MOO_ICT
             this.Focus();
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FimComboTimer_Tick(object sender, EventArgs e)
+        {
+            label_combo_quebrado.Visible = false;
+            FimComboTimer.Stop();
+        }
         
 
         private void stamineBar_Click_1(object sender, EventArgs e)

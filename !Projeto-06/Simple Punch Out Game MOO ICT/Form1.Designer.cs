@@ -37,6 +37,9 @@
             BoxerMoveTimer = new System.Windows.Forms.Timer(components);
             btnRestart = new Button();
             lblMensagem = new Label();
+            label_combo = new Label();
+            label_combo_quebrado = new Label();
+            FimComboTimer = new System.Windows.Forms.Timer(components);
             stamineBar = new ProgressBar();
             ((System.ComponentModel.ISupportInitialize)player).BeginInit();
             ((System.ComponentModel.ISupportInitialize)boxer).BeginInit();
@@ -115,6 +118,35 @@
             lblMensagem.TextAlign = ContentAlignment.MiddleCenter;
             lblMensagem.Visible = false;
             // 
+            // label_combo
+            // 
+            label_combo.BackColor = Color.Transparent;
+            label_combo.Font = new Font("Segoe UI", 15F);
+            label_combo.Location = new Point(12, 256);
+            label_combo.Name = "label_combo";
+            label_combo.Size = new Size(47, 27);
+            label_combo.TabIndex = 5;
+            label_combo.Text = "0";
+            label_combo.Visible = false;
+            label_combo.Click += label1_Click;
+            // 
+            // label_combo_quebrado
+            // 
+            label_combo_quebrado.BackColor = Color.Transparent;
+            label_combo_quebrado.Font = new Font("Segoe UI", 15F);
+            label_combo_quebrado.Location = new Point(1, 293);
+            label_combo_quebrado.Name = "label_combo_quebrado";
+            label_combo_quebrado.Size = new Size(178, 29);
+            label_combo_quebrado.TabIndex = 6;
+            label_combo_quebrado.Text = "Combo quebrado!";
+            label_combo_quebrado.Visible = false;
+            label_combo_quebrado.Click += label1_Click_1;
+            // 
+            // FimComboTimer
+            // 
+            FimComboTimer.Enabled = true;
+            FimComboTimer.Interval = 2000;
+            FimComboTimer.Tick += FimComboTimer_Tick;
             // stamineBar
             // 
             stamineBar.Location = new Point(603, 526);
@@ -131,6 +163,8 @@
             BackgroundImage = Properties.Resources.background;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(734, 561);
+            Controls.Add(label_combo_quebrado);
+            Controls.Add(label_combo);
             Controls.Add(stamineBar);
             Controls.Add(lblMensagem);
             Controls.Add(btnRestart);
@@ -161,6 +195,9 @@
         private System.Windows.Forms.Timer BoxerMoveTimer;
         private Button btnRestart;
         private Label lblMensagem;
+        private Label label_combo;
+        private Label label_combo_quebrado;
+        private System.Windows.Forms.Timer FimComboTimer;
         private ProgressBar stamineBar;
     }
 }
