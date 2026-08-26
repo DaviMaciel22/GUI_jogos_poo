@@ -13,7 +13,8 @@ namespace Simple_Punch_Out_Game_MOO_ICT
         int combo = 0;
         List<string> enemyAttack = new List<string> { "left", "right", "block" };
         int playerStamina = 100;
-        
+        DateTime momentoDefesa;
+
 
 
 
@@ -46,6 +47,17 @@ namespace Simple_Punch_Out_Game_MOO_ICT
                             combo = 0;
                         }
                     }
+                    
+                    if (boxer.Bounds.IntersectsWith(player.Bounds) && playerBlock == true)
+                    {
+                        TimeSpan tempoDecorrido = DateTime.Now - momentoDefesa;
+
+                        if (tempoDecorrido.TotalMilliseconds < 300) 
+                        {
+                            combo++;
+                            AtualizarTelaCombo();
+                        }
+                    }
 
                     break;
 
@@ -63,6 +75,17 @@ namespace Simple_Punch_Out_Game_MOO_ICT
                             label_combo_quebrado.Visible = true;
                             FimComboTimer.Start();
                             combo = 0;
+                        }
+                    }
+
+                    if (boxer.Bounds.IntersectsWith(player.Bounds) && playerBlock == true)
+                    {
+                        TimeSpan tempoDecorrido = DateTime.Now - momentoDefesa;
+
+                        if (tempoDecorrido.TotalMilliseconds < 300)
+                        {
+                            combo++;
+                            AtualizarTelaCombo();
                         }
                     }
 
@@ -219,6 +242,7 @@ namespace Simple_Punch_Out_Game_MOO_ICT
             {
                 player.Image = Properties.Resources.boxer_block;
                 playerBlock = true;
+                momentoDefesa = DateTime.Now;
             }
         }
 
