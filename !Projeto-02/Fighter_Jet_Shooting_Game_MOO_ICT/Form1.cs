@@ -7,7 +7,7 @@ namespace Fighter_Jet_Shooting_Game_MOO_ICT
 
         bool goLeft, goRight, shooting, isGameOver;
         int score;
-        int playerSpeed = 12;
+        int playerSpeed = 25;
         int enemySpeed;
         int bulletSpeed;
         Random rnd = new Random();
@@ -50,7 +50,7 @@ namespace Fighter_Jet_Shooting_Game_MOO_ICT
 
             if (shooting == true)
             {
-                bulletSpeed = 20;
+                bulletSpeed = 50;
                 bullet.Top -= bulletSpeed;
             }
             else
