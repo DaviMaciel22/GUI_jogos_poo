@@ -12,9 +12,9 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\Punisher\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Punisher\\.nuget\\packages",
-      "D:\\Desenvolvimento\\IDE\\Microsoft Visual Studio\\Shared2022\\NuGetPackages"
+      "C:\\Users\\User\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\User\\.nuget\\packages",
+      "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
     ],
     "configProperties": {
       "System.Runtime.Serialization.EnableUnsafeBinaryFormatterSerialization": false,

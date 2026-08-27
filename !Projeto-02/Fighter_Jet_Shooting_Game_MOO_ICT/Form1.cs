@@ -4,11 +4,10 @@ namespace Fighter_Jet_Shooting_Game_MOO_ICT
     public partial class Form1 : Form
     {
 
-        bool goLeft, goRight, shooting, isGameOver;
+        bool goLeft, goRight, isGameOver;
         int score;
         int playerSpeed = 25;
-        int enemySpeed;
-        int bulletSpeed;
+        int enemySpeed = 5;
         Random rnd = new Random();
 
         public Form1()
@@ -61,7 +60,7 @@ namespace Fighter_Jet_Shooting_Game_MOO_ICT
 
                     if (x.Bounds.IntersectsWith(enemyOne.Bounds))
                     {
-                        score += 1;
+                        AdicionarPonto();
                         enemyOne.Top = -450;
                         enemyOne.Left = rnd.Next(20, 600);
 
@@ -71,7 +70,7 @@ namespace Fighter_Jet_Shooting_Game_MOO_ICT
 
                     if (x.Bounds.IntersectsWith(enemyTwo.Bounds))
                     {
-                        score += 1;
+                        AdicionarPonto();
                         enemyTwo.Top = -450;
                         enemyTwo.Left = rnd.Next(20, 600);
 
@@ -81,7 +80,7 @@ namespace Fighter_Jet_Shooting_Game_MOO_ICT
 
                     if (x.Bounds.IntersectsWith(enemyThree.Bounds))
                     {
-                        score += 1;
+                        AdicionarPonto();
                         enemyThree.Top = -450;
                         enemyThree.Left = rnd.Next(20, 600);
 
@@ -90,17 +89,6 @@ namespace Fighter_Jet_Shooting_Game_MOO_ICT
                     }
                 }
             }
-
-            if (score == 5)
-            {
-                enemySpeed = 10;
-            }
-            if (score == 10)
-            {
-                enemySpeed = 15;
-            }
-
-
         }
 
         private void keyisdown(object sender, KeyEventArgs e)
@@ -164,10 +152,6 @@ namespace Fighter_Jet_Shooting_Game_MOO_ICT
             enemyThree.Top = rnd.Next(0, 900) * -1;
 
             score = 0;
-            bulletSpeed = 0;
-            bullet.Left = -300;
-            shooting = false;
-
 
             txtScore.Text = score.ToString();
 
@@ -180,5 +164,16 @@ namespace Fighter_Jet_Shooting_Game_MOO_ICT
             txtScore.Text += Environment.NewLine + "Game Over!!" + Environment.NewLine + "Press Enter to try again.";
 
         }
+
+        private void AdicionarPonto()
+        {
+            score += 1;
+
+            if (score != 0 && score % 5 == 0)
+            {
+                enemySpeed += 2;
+            }
+        }
+
     }
 }
