@@ -1,5 +1,4 @@
 using System.Numerics;
-
 namespace Fighter_Jet_Shooting_Game_MOO_ICT
 {
     public partial class Form1 : Form
@@ -48,42 +47,48 @@ namespace Fighter_Jet_Shooting_Game_MOO_ICT
             }
             // player movement logic ends
 
-            if (shooting == true)
+            foreach (Control x in this.Controls)
             {
-                bulletSpeed = 50;
-                bullet.Top -= bulletSpeed;
-            }
-            else
-            {
-                bullet.Left = -300;
-                bulletSpeed = 0;
-            }
+                if (x is PictureBox && (string)x.Tag == "tiro")
+                {
+                    x.Top -= 20;
 
-            if (bullet.Top < -30)
-            {
-                shooting = false;
-            }
+                    if (x.Top < -50)
+                    {
+                        this.Controls.Remove(x);
+                        x.Dispose();
+                    }
 
-            if (bullet.Bounds.IntersectsWith(enemyOne.Bounds))
-            {
-                score += 1;
-                enemyOne.Top = -450;
-                enemyOne.Left = rnd.Next(20, 600);
-                shooting = false;
-            }
-            if (bullet.Bounds.IntersectsWith(enemyTwo.Bounds))
-            {
-                score += 1;
-                enemyTwo.Top = -650;
-                enemyTwo.Left = rnd.Next(20, 600);
-                shooting = false;
-            }
-            if (bullet.Bounds.IntersectsWith(enemyThree.Bounds))
-            {
-                score += 1;
-                enemyThree.Top = -750;
-                enemyThree.Left = rnd.Next(20, 600);
-                shooting = false;
+                    if (x.Bounds.IntersectsWith(enemyOne.Bounds))
+                    {
+                        score += 1;
+                        enemyOne.Top = -450;
+                        enemyOne.Left = rnd.Next(20, 600);
+
+                        this.Controls.Remove(x);
+                        x.Dispose();
+                    }
+
+                    if (x.Bounds.IntersectsWith(enemyTwo.Bounds))
+                    {
+                        score += 1;
+                        enemyTwo.Top = -450;
+                        enemyTwo.Left = rnd.Next(20, 600);
+
+                        this.Controls.Remove(x);
+                        x.Dispose();
+                    }
+
+                    if (x.Bounds.IntersectsWith(enemyThree.Bounds))
+                    {
+                        score += 1;
+                        enemyThree.Top = -450;
+                        enemyThree.Left = rnd.Next(20, 600);
+
+                        this.Controls.Remove(x);
+                        x.Dispose();
+                    }
+                }
             }
 
             if (score == 5)
@@ -120,18 +125,28 @@ namespace Fighter_Jet_Shooting_Game_MOO_ICT
             {
                 goRight = false;
             }
-            if (e.KeyCode == Keys.Space && shooting == false)
+            if (e.KeyCode == Keys.Space)
             {
-                shooting = true;
-
-                bullet.Top = player.Top - 30;
-                bullet.Left = player.Left + (player.Width / 2);
-
+                CriarTiro();
             }
             if (e.KeyCode == Keys.Enter && isGameOver == true)
             {
                 resetGame();
             }
+        }
+
+        private void CriarTiro()
+        {
+            PictureBox novoTiro = new PictureBox();
+
+            novoTiro.BackColor = Color.Yellow;
+            novoTiro.Size = new Size(5, 20);
+            novoTiro.Top = player.Top - 30;
+            novoTiro.Left = player.Left + (player.Width / 2);
+
+            novoTiro.Tag = "tiro";
+
+            this.Controls.Add(novoTiro);
         }
 
         private void resetGame()

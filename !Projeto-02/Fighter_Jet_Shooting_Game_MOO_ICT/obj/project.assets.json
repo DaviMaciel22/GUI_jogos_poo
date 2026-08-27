@@ -8,23 +8,23 @@
     "net10.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\alunolab13\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\PROGRAMAS\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\alunolab13\\source\\repos\\DaviMaciel22\\GUI_jogos_poo\\!Projeto-02\\Fighter_Jet_Shooting_Game_MOO_ICT\\Fighter_Jet_Shooting_Game_MOO_ICT.csproj",
+      "projectUniqueName": "C:\\Users\\User\\source\\repos\\DaviMaciel22\\GUI_jogos_poo\\!Projeto-02\\Fighter_Jet_Shooting_Game_MOO_ICT\\Fighter_Jet_Shooting_Game_MOO_ICT.csproj",
       "projectName": "Fighter_Jet_Shooting_Game_MOO_ICT",
-      "projectPath": "C:\\Users\\alunolab13\\source\\repos\\DaviMaciel22\\GUI_jogos_poo\\!Projeto-02\\Fighter_Jet_Shooting_Game_MOO_ICT\\Fighter_Jet_Shooting_Game_MOO_ICT.csproj",
-      "packagesPath": "C:\\Users\\alunolab13\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\alunolab13\\source\\repos\\DaviMaciel22\\GUI_jogos_poo\\!Projeto-02\\Fighter_Jet_Shooting_Game_MOO_ICT\\obj\\",
+      "projectPath": "C:\\Users\\User\\source\\repos\\DaviMaciel22\\GUI_jogos_poo\\!Projeto-02\\Fighter_Jet_Shooting_Game_MOO_ICT\\Fighter_Jet_Shooting_Game_MOO_ICT.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\source\\repos\\DaviMaciel22\\GUI_jogos_poo\\!Projeto-02\\Fighter_Jet_Shooting_Game_MOO_ICT\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\PROGRAMAS\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\alunolab13\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
