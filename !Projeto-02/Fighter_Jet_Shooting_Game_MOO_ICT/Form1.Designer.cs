@@ -35,6 +35,7 @@
             player = new PictureBox();
             txtScore = new Label();
             gameTimer = new System.Windows.Forms.Timer(components);
+            gameOverLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)enemyOne).BeginInit();
             ((System.ComponentModel.ISupportInitialize)enemyTwo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)enemyThree).BeginInit();
@@ -93,10 +94,10 @@
             // 
             txtScore.BackColor = Color.Transparent;
             txtScore.Font = new Font("Microsoft Sans Serif", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtScore.Location = new Point(172, 274);
+            txtScore.Location = new Point(409, 349);
             txtScore.Margin = new Padding(4, 0, 4, 0);
             txtScore.Name = "txtScore";
-            txtScore.Size = new Size(541, 252);
+            txtScore.Size = new Size(71, 47);
             txtScore.TabIndex = 1;
             txtScore.Text = "0";
             txtScore.TextAlign = ContentAlignment.MiddleCenter;
@@ -106,12 +107,26 @@
             gameTimer.Interval = 20;
             gameTimer.Tick += mainGameTimerEvent;
             // 
+            // gameOverLabel
+            // 
+            gameOverLabel.AutoSize = true;
+            gameOverLabel.BackColor = Color.Transparent;
+            gameOverLabel.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            gameOverLabel.Location = new Point(318, 396);
+            gameOverLabel.Name = "gameOverLabel";
+            gameOverLabel.Size = new Size(242, 56);
+            gameOverLabel.TabIndex = 2;
+            gameOverLabel.Text = "Game Over\r\nPress Enter to try again!";
+            gameOverLabel.TextAlign = ContentAlignment.TopCenter;
+            gameOverLabel.Visible = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(128, 255, 255);
             ClientSize = new Size(933, 778);
+            Controls.Add(gameOverLabel);
             Controls.Add(player);
             Controls.Add(enemyThree);
             Controls.Add(enemyTwo);
@@ -140,6 +155,6 @@
         private System.Windows.Forms.PictureBox player;
         private System.Windows.Forms.Label txtScore;
         private System.Windows.Forms.Timer gameTimer;
-
+        private Label gameOverLabel;
     }
 }
