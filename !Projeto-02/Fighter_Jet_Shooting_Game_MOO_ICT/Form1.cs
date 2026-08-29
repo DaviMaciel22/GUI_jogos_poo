@@ -161,7 +161,7 @@ namespace Fighter_Jet_Shooting_Game_MOO_ICT
         {
             isGameOver = true;
             gameTimer.Stop();
-            txtScore.Text += Environment.NewLine + "Game Over!!" + Environment.NewLine + "Press Enter to try again.";
+            gameOverLabel.Visible = true;
 
         }
 
@@ -174,6 +174,5 @@ namespace Fighter_Jet_Shooting_Game_MOO_ICT
                 enemySpeed += 2;
             }
         }
-
     }
 }
