@@ -41,8 +41,13 @@
             label_combo_quebrado = new Label();
             FimComboTimer = new System.Windows.Forms.Timer(components);
             stamineBar = new ProgressBar();
+            quadroCor = new Panel();
+            cor2 = new Button();
+            cor1 = new Button();
+            labelCor = new Label();
             ((System.ComponentModel.ISupportInitialize)player).BeginInit();
             ((System.ComponentModel.ISupportInitialize)boxer).BeginInit();
+            quadroCor.SuspendLayout();
             SuspendLayout();
             // 
             // boxerHealthBar
@@ -159,6 +164,46 @@
             stamineBar.Value = 100;
             stamineBar.Click += stamineBar_Click_1;
             // 
+            // quadroCor
+            // 
+            quadroCor.Controls.Add(cor2);
+            quadroCor.Controls.Add(cor1);
+            quadroCor.Controls.Add(labelCor);
+            quadroCor.Location = new Point(261, 242);
+            quadroCor.Name = "quadroCor";
+            quadroCor.Size = new Size(229, 132);
+            quadroCor.TabIndex = 7;
+            // 
+            // cor2
+            // 
+            cor2.BackColor = Color.Red;
+            cor2.Location = new Point(135, 65);
+            cor2.Name = "cor2";
+            cor2.Size = new Size(75, 50);
+            cor2.TabIndex = 2;
+            cor2.UseVisualStyleBackColor = false;
+            cor2.Click += cor2_Click;
+            // 
+            // cor1
+            // 
+            cor1.BackColor = Color.Cyan;
+            cor1.Location = new Point(19, 65);
+            cor1.Name = "cor1";
+            cor1.Size = new Size(75, 50);
+            cor1.TabIndex = 1;
+            cor1.UseVisualStyleBackColor = false;
+            cor1.Click += cor1_Click;
+            // 
+            // labelCor
+            // 
+            labelCor.AutoSize = true;
+            labelCor.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            labelCor.Location = new Point(12, 22);
+            labelCor.Name = "labelCor";
+            labelCor.Size = new Size(206, 20);
+            labelCor.TabIndex = 0;
+            labelCor.Text = "Escolha a cor das suas luvas:";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -166,6 +211,7 @@
             BackgroundImage = Properties.Resources.background;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(734, 561);
+            Controls.Add(quadroCor);
             Controls.Add(label_combo_quebrado);
             Controls.Add(label_combo);
             Controls.Add(stamineBar);
@@ -183,6 +229,8 @@
             KeyUp += KeyIsUp;
             ((System.ComponentModel.ISupportInitialize)player).EndInit();
             ((System.ComponentModel.ISupportInitialize)boxer).EndInit();
+            quadroCor.ResumeLayout(false);
+            quadroCor.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
 
@@ -202,5 +250,9 @@
         private Label label_combo_quebrado;
         private System.Windows.Forms.Timer FimComboTimer;
         private ProgressBar stamineBar;
+        private Panel quadroCor;
+        private Label labelCor;
+        private Button cor2;
+        private Button cor1;
     }
 }

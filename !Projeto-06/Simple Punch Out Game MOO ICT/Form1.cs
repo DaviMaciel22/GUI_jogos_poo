@@ -14,8 +14,7 @@ namespace Simple_Punch_Out_Game_MOO_ICT
         List<string> enemyAttack = new List<string> { "left", "right", "block" };
         int playerStamina = 100;
         DateTime momentoDefesa;
-
-
+        int corDaLuva = 0;
 
 
         public Form1()
@@ -26,84 +25,88 @@ namespace Simple_Punch_Out_Game_MOO_ICT
 
         private void BoxerAttackTImerEvent(object sender, EventArgs e)
         {
-
-            index = random.Next(0, enemyAttack.Count);
-
-            switch (enemyAttack[index].ToString())
+            if (corDaLuva != 0)
             {
-                case "left":
-                    boxer.Image = Properties.Resources.enemy_punch1;
-                    enemyBlock = false;
+                index = random.Next(0, enemyAttack.Count);
 
-                    if (boxer.Bounds.IntersectsWith(player.Bounds) && playerBlock == false)
-                    {
-                        playerHealth -= 5;
+                switch (enemyAttack[index].ToString())
+                {
+                    case "left":
+                        boxer.Image = Properties.Resources.enemy_punch1;
+                        enemyBlock = false;
 
-                        if (combo > 0)
+                        if (boxer.Bounds.IntersectsWith(player.Bounds) && playerBlock == false)
                         {
-                            label_combo.Visible = false;
-                            label_combo_quebrado.Visible = true;
-                            FimComboTimer.Start();
-                            combo = 0;
-                        }
-                    }
-                    
-                    if (boxer.Bounds.IntersectsWith(player.Bounds) && playerBlock == true)
-                    {
-                        TimeSpan tempoDecorrido = DateTime.Now - momentoDefesa;
+                            playerHealth -= 5;
 
-                        if (tempoDecorrido.TotalMilliseconds < 300) 
+                            if (combo > 0)
+                            {
+                                label_combo.Visible = false;
+                                label_combo_quebrado.Visible = true;
+                                FimComboTimer.Start();
+                                combo = 0;
+                            }
+                        }
+
+                        if (boxer.Bounds.IntersectsWith(player.Bounds) && playerBlock == true)
                         {
-                            combo++;
-                            AtualizarTelaCombo();
+                            TimeSpan tempoDecorrido = DateTime.Now - momentoDefesa;
+
+                            if (tempoDecorrido.TotalMilliseconds < 300)
+                            {
+                                combo++;
+                                AtualizarTelaCombo();
+                            }
                         }
-                    }
 
-                    break;
+                        break;
 
-                case "right":
+                    case "right":
 
-                    boxer.Image = Properties.Resources.enemy_punch2;
-                    enemyBlock = false;
+                        boxer.Image = Properties.Resources.enemy_punch2;
+                        enemyBlock = false;
 
-                    if (boxer.Bounds.IntersectsWith(player.Bounds) && playerBlock == false)
-                    {
-                        playerHealth -= 5;
-                        if (combo > 0)
+                        if (boxer.Bounds.IntersectsWith(player.Bounds) && playerBlock == false)
                         {
-                            label_combo.Visible = false;
-                            label_combo_quebrado.Visible = true;
-                            FimComboTimer.Start();
-                            combo = 0;
+                            playerHealth -= 5;
+                            if (combo > 0)
+                            {
+                                label_combo.Visible = false;
+                                label_combo_quebrado.Visible = true;
+                                FimComboTimer.Start();
+                                combo = 0;
+                            }
                         }
-                    }
 
-                    if (boxer.Bounds.IntersectsWith(player.Bounds) && playerBlock == true)
-                    {
-                        TimeSpan tempoDecorrido = DateTime.Now - momentoDefesa;
-
-                        if (tempoDecorrido.TotalMilliseconds < 300)
+                        if (boxer.Bounds.IntersectsWith(player.Bounds) && playerBlock == true)
                         {
-                            combo++;
-                            AtualizarTelaCombo();
+                            TimeSpan tempoDecorrido = DateTime.Now - momentoDefesa;
+
+                            if (tempoDecorrido.TotalMilliseconds < 300)
+                            {
+                                combo++;
+                                AtualizarTelaCombo();
+                            }
                         }
-                    }
 
-                    break;
+                        break;
 
-                case "block":
+                    case "block":
 
-                    boxer.Image = Properties.Resources.enemy_block;
-                    enemyBlock = true;
+                        boxer.Image = Properties.Resources.enemy_block;
+                        enemyBlock = true;
 
-                    break;
+                        break;
+                }
+
+
             }
-
 
         }
 
         private void BoxerMoveTimerEvent(object sender, EventArgs e)
         {
+
             // 1. Atualiza as barras de vida na tela
             if (playerHealth > 0)
             {
@@ -162,15 +165,27 @@ namespace Simple_Punch_Out_Game_MOO_ICT
             // Garante que o valor não passe de 100 ou caia abaixo de 0 antes de atualizar a UI
             playerStamina = Math.Clamp(playerStamina, 0, 100);
             stamineBar.Value = playerStamina;
+
+
         }
 
         private void KeyIsDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Left && playerStamina >= 30)
             {
-                player.Image = Properties.Resources.boxer_left_punch;
-                playerBlock = false;
-                playerStamina -= 30;
+                if (corDaLuva == 1)
+                {
+                    player.Image = Properties.Resources.boxer_left_punch;
+                    playerBlock = false;
+                    playerStamina -= 30;
+                }
+                else
+                {
+                    player.Image = Properties.Resources.boxer_left_punch_2;
+                    playerBlock = false;
+                    playerStamina -= 30;
+                }
+
 
                 if (player.Bounds.IntersectsWith(boxer.Bounds) && enemyBlock == false)
                 {
@@ -204,9 +219,19 @@ namespace Simple_Punch_Out_Game_MOO_ICT
             }
             if (e.KeyCode == Keys.Right && playerStamina >= 30)
             {
-                player.Image = Properties.Resources.boxer_right_punch;
-                playerBlock = false;
-                playerStamina -= 30;
+                if (corDaLuva == 1)
+                {
+                    player.Image = Properties.Resources.boxer_right_punch;
+                    playerBlock = false;
+                    playerStamina -= 30;
+                }
+                else
+                {
+                    player.Image = Properties.Resources.boxer_right_punch_2;
+                    playerBlock = false;
+                    playerStamina -= 30;
+                }
+
 
                 if (player.Bounds.IntersectsWith(boxer.Bounds) && enemyBlock == false)
                 {
@@ -240,16 +265,33 @@ namespace Simple_Punch_Out_Game_MOO_ICT
             }
             if (e.KeyCode == Keys.Down)
             {
-                player.Image = Properties.Resources.boxer_block;
-                playerBlock = true;
-                momentoDefesa = DateTime.Now;
+                if (corDaLuva == 1)
+                {
+                    player.Image = Properties.Resources.boxer_block;
+                    playerBlock = true;
+                    momentoDefesa = DateTime.Now;
+                }
+                else
+                {
+                    player.Image = Properties.Resources.boxer_block_2;
+                    playerBlock = true;
+                    momentoDefesa = DateTime.Now;
+                }
             }
         }
 
         private void KeyIsUp(object sender, KeyEventArgs e)
         {
-            player.Image = Properties.Resources.boxer_stand;
-            playerBlock = false;
+            if (corDaLuva == 1)
+            {
+                player.Image = Properties.Resources.boxer_stand;
+                playerBlock = false;
+            }
+            else
+            {
+                player.Image = Properties.Resources.boxer_stand_2;
+                playerBlock = false;
+            }
         }
 
         private void ResetGame()
@@ -278,7 +320,7 @@ namespace Simple_Punch_Out_Game_MOO_ICT
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            this.KeyPreview = true;
         }
 
         private void btnRestart_Click(object sender, EventArgs e)
@@ -309,12 +351,33 @@ namespace Simple_Punch_Out_Game_MOO_ICT
             label_combo_quebrado.Visible = false;
             FimComboTimer.Stop();
         }
-        
+
 
         private void stamineBar_Click_1(object sender, EventArgs e)
         {
 
         }
+
+        private void cor1_Click(object sender, EventArgs e)
+        {
+            cor1.Visible = false;
+            cor2.Visible = false;
+            quadroCor.Visible = false;
+            labelCor.Visible = false;
+            corDaLuva = 1;
+            this.Focus();
+        }
+
+        private void cor2_Click(object sender, EventArgs e)
+        {
+            cor1.Visible = false;
+            cor2.Visible = false;
+            quadroCor.Visible = false;
+            labelCor.Visible = false;
+            corDaLuva = 2;
+            this.Focus();
+            player.Image = Properties.Resources.boxer_stand_2;
+
+        }
     }
 }
-
