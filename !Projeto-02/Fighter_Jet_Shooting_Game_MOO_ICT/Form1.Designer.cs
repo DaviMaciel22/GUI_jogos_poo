@@ -112,7 +112,7 @@
             gameOverLabel.AutoSize = true;
             gameOverLabel.BackColor = Color.Transparent;
             gameOverLabel.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
-            gameOverLabel.Location = new Point(318, 396);
+            gameOverLabel.Location = new Point(328, 396);
             gameOverLabel.Name = "gameOverLabel";
             gameOverLabel.Size = new Size(242, 56);
             gameOverLabel.TabIndex = 2;

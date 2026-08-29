@@ -140,6 +140,7 @@ namespace Fighter_Jet_Shooting_Game_MOO_ICT
         private void resetGame()
         {
             gameTimer.Start();
+            gameOverLabel.Visible = false;
             enemySpeed = 6;
 
 
