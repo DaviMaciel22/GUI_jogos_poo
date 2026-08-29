@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fighter_Jet_Shooting_Game_MOO_ICT")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a2090f31315d2032253303a5bd858cacd8168f3e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+05c38534d541a27d8eea65fad7cc0dc456712066")]
 [assembly: System.Reflection.AssemblyProductAttribute("Fighter_Jet_Shooting_Game_MOO_ICT")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Fighter_Jet_Shooting_Game_MOO_ICT")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
