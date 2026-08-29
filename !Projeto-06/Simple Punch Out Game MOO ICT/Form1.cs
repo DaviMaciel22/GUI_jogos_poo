@@ -156,7 +156,7 @@ namespace Simple_Punch_Out_Game_MOO_ICT
 
             if (playerStamina < 100)
             {
-                playerStamina += 2; // Aumente este valor se quiser que recarregue mais rápido
+                playerStamina += 2; // Define o quão rápido a stamina vai recarregar
             }
 
             // Garante que o valor não passe de 100 ou caia abaixo de 0 antes de atualizar a UI
