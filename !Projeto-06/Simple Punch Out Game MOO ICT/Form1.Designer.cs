@@ -121,7 +121,8 @@
             // label_combo
             // 
             label_combo.BackColor = Color.Transparent;
-            label_combo.Font = new Font("Segoe UI", 15F);
+            label_combo.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            label_combo.ForeColor = Color.Red;
             label_combo.Location = new Point(12, 256);
             label_combo.Name = "label_combo";
             label_combo.Size = new Size(47, 27);
@@ -133,10 +134,11 @@
             // label_combo_quebrado
             // 
             label_combo_quebrado.BackColor = Color.Transparent;
-            label_combo_quebrado.Font = new Font("Segoe UI", 15F);
+            label_combo_quebrado.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            label_combo_quebrado.ForeColor = Color.Red;
             label_combo_quebrado.Location = new Point(1, 293);
             label_combo_quebrado.Name = "label_combo_quebrado";
-            label_combo_quebrado.Size = new Size(178, 29);
+            label_combo_quebrado.Size = new Size(186, 29);
             label_combo_quebrado.TabIndex = 6;
             label_combo_quebrado.Text = "Combo quebrado!";
             label_combo_quebrado.Visible = false;
@@ -147,6 +149,7 @@
             FimComboTimer.Enabled = true;
             FimComboTimer.Interval = 2000;
             FimComboTimer.Tick += FimComboTimer_Tick;
+            // 
             // stamineBar
             // 
             stamineBar.Location = new Point(603, 526);

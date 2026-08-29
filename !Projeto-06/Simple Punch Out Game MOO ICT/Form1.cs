@@ -264,7 +264,7 @@ namespace Simple_Punch_Out_Game_MOO_ICT
 
         public void AtualizarTelaCombo()
         {
-            label_combo.Text = combo.ToString();
+            label_combo.Text = "x" + combo.ToString();
             if (combo >= 1)
             {
                 label_combo.Visible = true;
