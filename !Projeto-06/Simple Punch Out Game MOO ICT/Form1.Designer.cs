@@ -134,7 +134,6 @@
             label_combo.TabIndex = 5;
             label_combo.Text = "0";
             label_combo.Visible = false;
-            label_combo.Click += label1_Click;
             // 
             // label_combo_quebrado
             // 
@@ -147,7 +146,6 @@
             label_combo_quebrado.TabIndex = 6;
             label_combo_quebrado.Text = "Combo quebrado!";
             label_combo_quebrado.Visible = false;
-            label_combo_quebrado.Click += label1_Click_1;
             // 
             // FimComboTimer
             // 
@@ -162,7 +160,6 @@
             stamineBar.Size = new Size(119, 23);
             stamineBar.TabIndex = 5;
             stamineBar.Value = 100;
-            stamineBar.Click += stamineBar_Click_1;
             // 
             // quadroCor
             // 

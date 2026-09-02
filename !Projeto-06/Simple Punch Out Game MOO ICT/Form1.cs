@@ -336,26 +336,10 @@ namespace Simple_Punch_Out_Game_MOO_ICT
             this.Focus();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
         private void FimComboTimer_Tick(object sender, EventArgs e)
         {
             label_combo_quebrado.Visible = false;
             FimComboTimer.Stop();
-        }
-
-
-        private void stamineBar_Click_1(object sender, EventArgs e)
-        {
-
         }
 
         private void cor1_Click(object sender, EventArgs e)
