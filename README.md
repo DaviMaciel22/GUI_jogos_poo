@@ -1,2 +1,4 @@
 # GUI_jogos_poo
 Um trabalho acadêmico com o intuito de desenvolver novas funcionalidades para jogos já existentes na linguagem C#. Para isso, devemos trabalhar com a interface (GUI) e código, aprimorando as nossas habilidades nessas áreas
+
+No jogo do avião as principais dores observadas foram o plano de fundo com cor forte e ruim contraste, a aparição muito rápida de inimigos a partir de determinado momento, a falta de um tutorial, a falta de movimentação vertical, tiros muito espaçados que por vezes não permitem atirar no inimigo a tempo e a falta de opção de escolher um avião diferente no início. Já no jogo do pugilista, as dores observadas foram a falta de uma barra de estamina, a falta de uma função de perry, a falta de um contador de combo, a falta de um botão “Recomeçar” ao acabar uma  partida, a falta de um tutorial no início para explicar os comandos, um bug visual quando um pugilista passa na frente do outro e a opção de escolher outros pugilistas.
