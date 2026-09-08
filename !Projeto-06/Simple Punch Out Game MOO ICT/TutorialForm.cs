@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -38,6 +38,7 @@ namespace Simple_Punch_Out_Game_MOO_ICT
                 "  Seta DIREITA   ->  Soco de direita\r\n" +
                 "  Seta BAIXO     ->  Defesa (bloqueio)\r\n" +
                 "  F1             ->  Reabrir este tutorial\r\n" +
+                "  F2             ->  Escolher o cenário (fundo e inimigo)\r\n" +
                 "\r\n" +
                 "ESTAMINA\r\n" +
                 "Cada soco gasta 30 de estamina. Sem estamina suficiente o golpe\r\n" +

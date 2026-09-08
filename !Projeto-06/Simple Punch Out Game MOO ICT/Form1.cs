@@ -14,6 +14,7 @@
         List<string> enemyAttack = new List<string> { "left", "right", "block" };
         int playerStamina = 100;
         DateTime momentoDefesa;
+        Cenario cenarioAtual = Cenario.Todos()[0];
 
 
 
@@ -21,13 +22,54 @@
         public Form1()
         {
             InitializeComponent();
+            AplicarCenario(cenarioAtual);
             ResetGame();
             this.Shown += Form1_Shown;
         }
 
         private void Form1_Shown(object? sender, EventArgs e)
         {
+            EscolherCenario();
             ShowTutorial();
+        }
+
+        /// <summary>
+        /// Abre a tela de seleção de cenário e aplica o cenário escolhido.
+        /// </summary>
+        private void EscolherCenario()
+        {
+            bool ataqueAtivo = BoxerAttackTimer.Enabled;
+            bool moveAtivo = BoxerMoveTimer.Enabled;
+
+            BoxerAttackTimer.Stop();
+            BoxerMoveTimer.Stop();
+
+            using (ScenarioForm escolha = new ScenarioForm(cenarioAtual))
+            {
+                if (escolha.ShowDialog(this) == DialogResult.OK)
+                {
+                    AplicarCenario(escolha.CenarioSelecionado);
+                }
+            }
+
+            if (ataqueAtivo) BoxerAttackTimer.Start();
+            if (moveAtivo) BoxerMoveTimer.Start();
+
+            this.Focus();
+        }
+
+        /// <summary>
+        /// Troca o fundo da tela e os sprites do inimigo conforme o cenário.
+        /// </summary>
+        private void AplicarCenario(Cenario cenario)
+        {
+            cenarioAtual = cenario;
+            this.BackgroundImage = cenario.Fundo;
+            this.BackgroundImageLayout = ImageLayout.Stretch;
+            boxer.Image = cenario.EnemyStand;
+            boxer.SizeMode = PictureBoxSizeMode.Zoom;
+            boxer.BackColor = Color.Transparent;
+            enemyBlock = false;
         }
 
         private void ShowTutorial()
@@ -60,7 +102,7 @@
             switch (enemyAttack[index].ToString())
             {
                 case "left":
-                    boxer.Image = Properties.Resources.enemy_punch1;
+                    boxer.Image = cenarioAtual.EnemyPunch1;
                     enemyBlock = false;
 
                     if (boxer.Bounds.IntersectsWith(player.Bounds) && playerBlock == false)
@@ -91,7 +133,7 @@
 
                 case "right":
 
-                    boxer.Image = Properties.Resources.enemy_punch2;
+                    boxer.Image = cenarioAtual.EnemyPunch2;
                     enemyBlock = false;
 
                     if (boxer.Bounds.IntersectsWith(player.Bounds) && playerBlock == false)
@@ -121,7 +163,7 @@
 
                 case "block":
 
-                    boxer.Image = Properties.Resources.enemy_block;
+                    boxer.Image = cenarioAtual.EnemyBlock;
                     enemyBlock = true;
 
                     break;
@@ -174,7 +216,7 @@
                 BoxerMoveTimer.Stop();
 
                 // Mostra o texto e o botão de restart na própria tela
-                lblMensagem.Text = "Tough Rob Venceu!";
+                lblMensagem.Text = cenarioAtual.NomeInimigo + " Venceu!";
                 lblMensagem.Visible = true;
                 btnRestart.Visible = true;
                 combo = 0;
@@ -197,6 +239,12 @@
             if (e.KeyCode == Keys.F1)
             {
                 ShowTutorial();
+                return;
+            }
+
+            if (e.KeyCode == Keys.F2)
+            {
+                EscolherCenario();
                 return;
             }
 
@@ -294,6 +342,13 @@
             enemyHealth = 100;
 
             boxer.Left = 400;
+            boxer.Image = cenarioAtual.EnemyStand;
+            player.Image = Properties.Resources.boxer_stand;
+            playerBlock = false;
+            enemyBlock = false;
+            combo = 0;
+            playerStamina = 100;
+            label_combo.Visible = false;
         }
 
         public void AtualizarTelaCombo()
